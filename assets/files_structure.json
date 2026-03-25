@@ -1,16 +1,18 @@
 {
   "about.txt": "file",
 
-  "arts": {
-    "sketch1.png": "file",
-    "model.jpg": "file"
-  },
-
   "projects": {
     "game1": {
       "info.txt": "file"
     }
   },
+  
+  "arts": {
+    "sketch1.png": "file",
+    "model.jpg": "file"
+  },
 
-  "models": {}
+  "models": {},
+
+  "links.txt": "file"
 }
