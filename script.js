@@ -176,7 +176,7 @@ function generateTree(obj, prefix = ""){
 
         if(typeof obj[key] === "object"){
 
-            return prefix + branch + key + "/\n" +
+            return prefix + branch + key +
                    generateTree(obj[key], nextPrefix);
 
         }
