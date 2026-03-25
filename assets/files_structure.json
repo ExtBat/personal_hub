@@ -12,7 +12,9 @@
     }
   },
 
-  "models": {},
+  "models": {
+    "model1.obj": "file"
+  },
 
   "links.txt": "file"
 }
