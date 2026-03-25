@@ -230,7 +230,7 @@ canvas {
 
 .window{
     width: 420px;
-    max-height: 260px;
+    max-height: 350px;
 
     backdrop-filter: blur(6px);
     background: rgba(255,255,255,0.04);
@@ -245,7 +245,6 @@ canvas {
     overflow: hidden;
 }
 
-/* стартовое окно видно */
 .window.active{
     display:block;
 }

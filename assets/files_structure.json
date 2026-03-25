@@ -14,5 +14,6 @@
 
   "models": {},
 
-  "links.txt": "file"
+  "links.txt": "file",
+  "[???].html": "file"
 }

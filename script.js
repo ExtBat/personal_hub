@@ -161,32 +161,52 @@ async function loadTree(){
         generateTree(data);
 
 }
+function glitchText(base, length = 3) {
+    const chars = "!@#$%^&*()_+-={}[]<>?/\\|~";
+    let result = "";
 
-function generateTree(obj, prefix = ""){
+    for (let i = 0; i < length; i++) {
+        result += chars[Math.floor(Math.random() * chars.length)];
+    }
 
+    return `[${result}]`;
+}
+function generateTree(obj, prefix = "") {
     const keys = Object.keys(obj);
 
     return keys.map((key, index) => {
-
         const isLast = index === keys.length - 1;
-
         const branch = isLast ? "└── " : "├── ";
-
         const nextPrefix = prefix + (isLast ? "    " : "│   ");
 
-        if(typeof obj[key] === "object"){
-            if (obj[key].length === 0) {
-                return prefix + branch + key + "/ (empty)";
-            }
-            return prefix + branch + key + "/\n" +
-                   generateTree(obj[key], nextPrefix);
+        const value = obj[key];
 
+        // 👾 Глитч для имени
+        let displayKey = key;
+        if (key.includes("[???]")) {
+            displayKey = key.replace("[???]", glitchText("[???]", 5));
         }
 
-        return prefix + branch + key;
+        if (value && typeof value === "object") {
+            const isEmpty =
+                (Array.isArray(value) && value.length === 0) ||
+                (!Array.isArray(value) && Object.keys(value).length === 0);
 
+            if (isEmpty) {
+                return prefix + branch + displayKey + "/ (empty)";
+            }
+
+            return (
+                prefix + branch + displayKey + "/\n" +
+                generateTree(value, nextPrefix)
+            );
+        }
+
+        return prefix + branch + displayKey;
     }).join("\n");
-
 }
+setInterval(() => {
+    document.getElementById("tree").textContent = generateTree(data);
+}, 200);
 
 loadTree();
