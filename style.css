@@ -1,0 +1,280 @@
+/* ==============================
+   Base styles
+============================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Jura', sans-serif;
+}
+
+body {
+    background: #000;
+    overflow: hidden;
+    height: 100vh;
+    color: white;
+}
+
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* ==============================
+   Containers
+============================== */
+.container {
+    position: relative;
+    bottom: -10px;
+    z-index: 2;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ==============================
+   Panels
+============================== */
+.title_panel {
+    padding: 15px 80px;
+    border-radius: 18px;
+    backdrop-filter: blur(5px);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+    text-align: center;
+}
+
+.tiny_panel {
+    position: absolute;
+    top: 100%;
+    left: 5%;
+    padding: 5px 40px;
+    border-radius: 0 0 18px 18px;
+    backdrop-filter: blur(5px);
+    background: rgba(255, 255, 255, 0.06);
+    border-left: 1px solid rgba(255, 255, 255, 0.15);
+    border-right: 1px solid rgba(255, 255, 255, 0.15);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+    text-align: center;
+}
+
+.buttons_panel {
+    padding: 0 50px;
+    border-radius: 18px;
+    backdrop-filter: blur(5px);
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.15);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+    text-align: left;
+    max-width: 600px;
+    margin-top: 0;
+    transition: margin-top 0.3s ease, transform 0.3s ease;
+}
+
+/* move buttons panel on hover */
+.title_panel:hover + .buttons_panel {
+    margin-top: 25px;
+}
+
+/* ==============================
+   Text
+============================== */
+.title {
+    font-size: 50px;
+    font-weight: 600;
+}
+
+.subtitle {
+    font-size: 14px;
+    opacity: 0;
+    pointer-events: none;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* show subtitle on hover */
+.title:hover .subtitle {
+    opacity: 0.8;
+    pointer-events: auto;
+    transform: scaleY(1);
+}
+
+.symbol {
+    display: inline-block;
+    width: 40px;
+    text-align: center;
+    opacity: 0.9;
+}
+
+/* ==============================
+   Logo
+============================== */
+.logo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(255,255,255,0.15);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+}
+
+/* ==============================
+   Buttons
+============================== */
+.button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0 5px;
+    cursor: pointer;
+    color: white;
+    font-size: 20px;
+    font-family: 'Jura', sans-serif;
+    position: relative;
+    transition: color 0.2s ease;
+}
+
+.button::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: 0.5px;
+    background: white;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease;
+}
+
+.button:hover::after {
+    transform: scaleX(1);
+}
+
+.button:hover {
+    color: #cfcfcf;
+}
+
+.button:active {
+    color: #808080;
+}
+
+.button:focus::after {
+    transform: scaleX(1);
+}
+
+.button:focus {
+    outline: none;
+}
+
+.side-symbol {
+    position: absolute;
+    top: 50%;
+    font-size: 20px;
+    color: rgba(255,255,255,1);
+    transform: translateY(-50%);
+    transition: transform 0.3s ease, color 0.3s ease;
+    pointer-events: none;
+    user-select: none;
+}
+
+.left-symbol {
+    left: 10px;
+    transition: left 0.3s ease;
+}
+
+.right-symbol {
+    right: 10px;
+    transition: right 0.3s ease;
+}
+
+.buttons_panel .button:hover ~ .left-symbol {
+    left: 20px;
+}
+
+.buttons_panel .button:hover ~ .right-symbol {
+    right: 20px;
+}
+
+/* ==============================
+   Icons
+============================== */
+.icon {
+    width: 15px;
+    height: 15px;
+    margin-left: 5px;
+    filter: invert(1);
+    transition: filter 0.3s ease;
+}
+
+.button:hover .icon {
+    filter: invert(0.7);
+}
+
+.button:active .icon {
+    filter: invert(0.3);
+}
+
+/* ==============================
+   ASCII FILE TREE
+============================== */
+
+.window{
+    width: 420px;
+    max-height: 260px;
+
+    backdrop-filter: blur(6px);
+    background: rgba(255,255,255,0.04);
+
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 14px;
+
+    box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+
+    display: none;
+
+    overflow: hidden;
+}
+
+/* стартовое окно видно */
+.window.active{
+    display:block;
+}
+
+.tree{
+
+    font-family: monospace;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    padding: 14px;
+
+    white-space: pre;
+
+    overflow-y: auto;
+
+    max-height: 260px;
+
+    opacity: 0.9;
+}
+
+/* скролл */
+.tree::-webkit-scrollbar{
+    width:6px;
+}
+
+.tree::-webkit-scrollbar-thumb{
+    background: rgba(255,255,255,0.15);
+    border-radius:10px;
+}
