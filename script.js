@@ -175,9 +175,9 @@ function generateTree(obj, prefix = ""){
         const nextPrefix = prefix + (isLast ? "    " : "│   ");
 
         if(typeof obj[key] === "object"){
-            if (obj[key].length === 0) {
-                return prefix + branch + key + "/ (empty)";
-            }
+            // if (obj[key].length === 0) {
+            //     return prefix + branch + key + "/ (empty)";
+            // }
             return prefix + branch + key + "/\n" +
                    generateTree(obj[key], nextPrefix);
 
