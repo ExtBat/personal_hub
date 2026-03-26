@@ -6,6 +6,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Jura', sans-serif;
+    user-select: none;
 }
 
 body {
@@ -120,7 +121,6 @@ canvas {
 .title {
     font-size: 50px;
     font-weight: 600;
-    user-select: none;
 }
 
 .subtitle {
@@ -130,7 +130,6 @@ canvas {
     transform: scaleY(0);
     transform-origin: top;
     transition: transform 0.3s ease, opacity 0.3s ease;
-    user-select: none;
 }
 
 /* show subtitle on hover */
@@ -173,7 +172,6 @@ canvas {
     font-family: 'Jura', sans-serif;
     position: relative;
     transition: color 0.2s ease;
-    user-select: none;
 }
 
 .button::after {
@@ -217,7 +215,6 @@ canvas {
     transform: translateY(-50%);
     transition: transform 0.3s ease, color 0.3s ease;
     pointer-events: none;
-    user-select: none;
 }
 
 .left-symbol {
@@ -250,7 +247,6 @@ canvas {
     align-items: center;
     gap: 5px;
     transition: color 0.2s ease;
-    user-select: none;
 }
 
 .win_button:hover {
@@ -353,7 +349,6 @@ canvas {
     overflow-y: auto;
     max-height: 260px;
     opacity: 0.9;
-    user-select: none;
 }
 
 .tree::-webkit-scrollbar{
