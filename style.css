@@ -1,5 +1,5 @@
 /* ==============================
-   Base styles
+   BASE STYLES
 ============================== */
 * {
     margin: 0;
@@ -23,8 +23,9 @@ canvas {
     width: 100%;
     height: 100%;
 }
+
 /* ==============================
-   Fade-in animation
+   FADE-IN ANIMATION
 ============================== */
 .fade-in {
     opacity: 0;
@@ -43,7 +44,7 @@ canvas {
 }
 
 /* ==============================
-   Containers
+   CONTAINERS
 ============================== */
 .container {
     position: relative;
@@ -56,6 +57,7 @@ canvas {
     align-items: center;
     gap: 10px;
 }
+
 .win_container {
     position: relative;
     z-index: 2;
@@ -67,7 +69,7 @@ canvas {
 }
 
 /* ==============================
-   Panels
+   PANELS
 ============================== */
 .title_panel {
     padding: 15px 80px;
@@ -98,7 +100,7 @@ canvas {
     padding: 0 50px;
     border-radius: 18px;
     opacity: 0;
-    transform: scale(70%,70%);
+    transform: scale(0.7);
     backdrop-filter: blur(5px);
     background: rgba(255,255,255,0.06);
     border: 1px solid rgba(255,255,255,0.15);
@@ -110,13 +112,13 @@ canvas {
     transition: margin-top 0.6s ease, transform 0.6s ease, opacity 0.6s ease, filter 0.6s ease;
 }
 
-/* move buttons panel on hover */
+/* Move buttons panel on title hover */
 .title_panel:hover + .buttons_panel {
     margin-top: 25px;
 }
 
 /* ==============================
-   Text
+   TEXT STYLES
 ============================== */
 .title {
     font-size: 50px;
@@ -132,7 +134,7 @@ canvas {
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-/* show subtitle on hover */
+/* Show subtitle on title hover */
 .title:hover .subtitle {
     opacity: 0.8;
     pointer-events: auto;
@@ -147,7 +149,7 @@ canvas {
 }
 
 /* ==============================
-   Logo
+   LOGO
 ============================== */
 .logo {
     width: 150px;
@@ -159,7 +161,7 @@ canvas {
 }
 
 /* ==============================
-   Buttons
+   BUTTONS
 ============================== */
 .button {
     background: none;
@@ -187,26 +189,15 @@ canvas {
     transition: transform 0.3s ease;
 }
 
-.button:hover::after {
-    transform: scaleX(1);
-}
+.button:hover::after { transform: scaleX(1); }
+.button:hover { color: #cfcfcf; }
+.button:active { color: #808080; }
+.button:focus::after { transform: scaleX(1); }
+.button:focus { outline: none; }
 
-.button:hover {
-    color: #cfcfcf;
-}
-
-.button:active {
-    color: #808080;
-}
-
-.button:focus::after {
-    transform: scaleX(1);
-}
-
-.button:focus {
-    outline: none;
-}
-
+/* ==============================
+   SIDE SYMBOLS (LEFT/RIGHT)
+============================== */
 .side-symbol {
     position: absolute;
     top: 50%;
@@ -217,24 +208,16 @@ canvas {
     pointer-events: none;
 }
 
-.left-symbol {
-    left: 10px;
-    transition: left 0.3s ease;
-}
+.left-symbol { left: 10px; transition: left 0.3s ease; }
+.right-symbol { right: 10px; transition: right 0.3s ease; }
 
-.right-symbol {
-    right: 10px;
-    transition: right 0.3s ease;
-}
+/* Move side symbols on button hover */
+.buttons_panel .button:hover ~ .left-symbol { left: 20px; }
+.buttons_panel .button:hover ~ .right-symbol { right: 20px; }
 
-.buttons_panel .button:hover ~ .left-symbol {
-    left: 20px;
-}
-
-.buttons_panel .button:hover ~ .right-symbol {
-    right: 20px;
-}
-
+/* ==============================
+   WINDOW BUTTONS
+============================== */
 .win_button {
     background: none;
     border: none;
@@ -249,15 +232,11 @@ canvas {
     transition: color 0.2s ease;
 }
 
-.win_button:hover {
-    color: #cfcfcf;
-}
-.win_button:active {
-    color: #808080;
-}
+.win_button:hover { color: #cfcfcf; }
+.win_button:active { color: #808080; }
 
 /* ==============================
-   Icons
+   ICONS
 ============================== */
 .icon {
     width: 15px;
@@ -267,22 +246,14 @@ canvas {
     transition: filter 0.3s ease, width 0.3s ease, height 0.3s ease, margin-left 0.3s ease;
 }
 
-.button:hover .icon {
-    filter: invert(0.7);
-}
+.button:hover .icon { filter: invert(0.7); }
+.button:active .icon { filter: invert(0.3); }
+.win_button:hover .icon { filter: invert(0.7); }
+.win_button:active .icon { filter: invert(0.3); }
 
-.button:active .icon {
-    filter: invert(0.3);
-}
-
-.win_button:hover .icon {
-    filter: invert(0.7);
-}
-
-.win_button:active .icon {
-    filter: invert(0.3);
-}
-
+/* ==============================
+   INDICATORS & BORDER LINES
+============================== */
 .indicator {
     width: 10px;
     height: 10px;
@@ -290,16 +261,13 @@ canvas {
     top: 10px;
     position: absolute;
     border-radius: 50%;
-    object-fit: cover;
     background: rgba(255, 255, 255, 1);
     opacity: 0;
     box-shadow: 0 8px 30px rgba(0,0,0,0.5);
     transition: opacity 0.3s ease;
 }
 
-.indicator.active {
-    opacity: 1;
-}
+.indicator.active { opacity: 1; }
 
 .border_line {
     width: 100%;
@@ -307,40 +275,30 @@ canvas {
     background: rgba(255,255,255,0.15);
     opacity: 1;
     margin: 5px 0;
-    
     transition: opacity 0.2s ease;
 }
 
 /* ==============================
-   ASCII FILE TREE
+   ASCII FILE TREE WINDOW
 ============================== */
-
 .static_window {
     position: relative;
     width: 420px;
     max-height: 350px;
-
+    left: 0px;
     backdrop-filter: blur(6px);
     background: rgba(255,255,255,0.04);
-
     border: 1px solid rgba(255,255,255,0.15);
     border-radius: 14px;
-
     box-shadow: 0 8px 30px rgba(0,0,0,0.6);
-/* 
-    left: 50%;
-    transform: translateX(-50%); */
-
     display: none;
     overflow: hidden;
     transition: all 0.3s ease;
 }
 
-.static_window.active{
-    display:block;
-}
+.static_window.active { display: block; }
 
-.tree{
+.tree {
     font-family: monospace;
     font-size: 14px;
     line-height: 1.6;
@@ -351,62 +309,54 @@ canvas {
     opacity: 0.9;
 }
 
-.tree::-webkit-scrollbar{
-    width:6px;
-}
-
-.tree::-webkit-scrollbar-thumb{
+.tree::-webkit-scrollbar { width: 6px; }
+.tree::-webkit-scrollbar-thumb {
     background: rgba(255,255,255,0.15);
-    border-radius:10px;
+    border-radius: 10px;
 }
 
-.item{
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
+.item { display: flex; align-items: center; gap: 5px; }
 
-/* COMMIT PLACEHOLDER */
-
-.center_placeholder{
-    width: 420px;
-    height: 300px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    opacity:0.6;
-}
-
-.static_window.collapsed{
+/* ==============================
+   COLLAPSED WINDOW STYLE
+============================== */
+.static_window.collapsed {
     width: 25px;
     height: 100%;
-    /* margin-left: 60px; */
+    left: -25px;
 }
-.static_window.collapsed .icon{
+
+.static_window.collapsed .icon {
     width: 15px;
     height: 15px;
     margin-left: -5px;
 }
 
-.static_window.collapsed .border_line{
-    opacity:0;
+.static_window.collapsed .border_line { opacity: 0; }
+.static_window.collapsed .tree { display: none; }
+.static_window.collapsed .win_button { font-size: 0; }
+
+/* ==============================
+   PLACEHOLDERS
+============================== */
+.center_placeholder {
+    width: 420px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.6;
 }
 
-.static_window.collapsed .tree{
-    display:none;
-}
-
-.static_window.collapsed .win_button{
-    font-size: 0;
-}
-
+/* ==============================
+   CENTERED IMAGE (PIXELATED)
+============================== */
 .centered_image {
-    position:relative;
+    position: relative;
     left: 10%;
     width: 300px;
     height: 300px;
     object-fit: cover;
-    background: none;
     image-rendering: pixelated;
     image-rendering: crisp-edges;
 }
