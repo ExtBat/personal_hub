@@ -22,6 +22,24 @@ canvas {
     width: 100%;
     height: 100%;
 }
+/* ==============================
+   Fade-in animation
+============================== */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px) scale(0.8);
+    filter: blur(6px);
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s ease,
+        filter 0.6s ease;
+}
+
+.loaded .fade-in {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+}
 
 /* ==============================
    Containers
@@ -30,10 +48,19 @@ canvas {
     position: relative;
     bottom: -10px;
     z-index: 2;
-    height: 100vh;
+    height: 45vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+.win_container {
+    position: relative;
+    z-index: 2;
+    height: 45vh;
+    display: flex;
+    justify-content: center;
     align-items: center;
     gap: 10px;
 }
@@ -54,7 +81,7 @@ canvas {
 .tiny_panel {
     position: absolute;
     top: 100%;
-    left: 5%;
+    left: 3%;
     padding: 5px 40px;
     border-radius: 0 0 18px 18px;
     backdrop-filter: blur(5px);
@@ -69,6 +96,8 @@ canvas {
 .buttons_panel {
     padding: 0 50px;
     border-radius: 18px;
+    opacity: 0;
+    transform: scale(70%,70%);
     backdrop-filter: blur(5px);
     background: rgba(255,255,255,0.06);
     border: 1px solid rgba(255,255,255,0.15);
@@ -76,7 +105,8 @@ canvas {
     text-align: left;
     max-width: 600px;
     margin-top: 0;
-    transition: margin-top 0.3s ease, transform 0.3s ease;
+    filter: blur(6px);
+    transition: margin-top 0.6s ease, transform 0.6s ease, opacity 0.6s ease, filter 0.6s ease;
 }
 
 /* move buttons panel on hover */
@@ -90,6 +120,7 @@ canvas {
 .title {
     font-size: 50px;
     font-weight: 600;
+    user-select: none;
 }
 
 .subtitle {
@@ -99,6 +130,7 @@ canvas {
     transform: scaleY(0);
     transform-origin: top;
     transition: transform 0.3s ease, opacity 0.3s ease;
+    user-select: none;
 }
 
 /* show subtitle on hover */
@@ -141,6 +173,7 @@ canvas {
     font-family: 'Jura', sans-serif;
     position: relative;
     transition: color 0.2s ease;
+    user-select: none;
 }
 
 .button::after {
@@ -205,6 +238,28 @@ canvas {
     right: 20px;
 }
 
+.win_button {
+    background: none;
+    border: none;
+    margin: 10px;
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+    font-family: monospace;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.2s ease;
+    user-select: none;
+}
+
+.win_button:hover {
+    color: #cfcfcf;
+}
+.win_button:active {
+    color: #808080;
+}
+
 /* ==============================
    Icons
 ============================== */
@@ -213,7 +268,7 @@ canvas {
     height: 15px;
     margin-left: 5px;
     filter: invert(1);
-    transition: filter 0.3s ease;
+    transition: filter 0.3s ease, width 0.3s ease, height 0.3s ease, margin-left 0.3s ease;
 }
 
 .button:hover .icon {
@@ -224,11 +279,48 @@ canvas {
     filter: invert(0.3);
 }
 
+.win_button:hover .icon {
+    filter: invert(0.7);
+}
+
+.win_button:active .icon {
+    filter: invert(0.3);
+}
+
+.indicator {
+    width: 10px;
+    height: 10px;
+    right: 10px;
+    top: 10px;
+    position: absolute;
+    border-radius: 50%;
+    object-fit: cover;
+    background: rgba(255, 255, 255, 1);
+    opacity: 0;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+    transition: opacity 0.3s ease;
+}
+
+.indicator.active {
+    opacity: 1;
+}
+
+.border_line {
+    width: 100%;
+    height: 0.5px;
+    background: rgba(255,255,255,0.15);
+    opacity: 1;
+    margin: 5px 0;
+    
+    transition: opacity 0.2s ease;
+}
+
 /* ==============================
    ASCII FILE TREE
 ============================== */
 
-.window{
+.static_window {
+    position: relative;
     width: 420px;
     max-height: 350px;
 
@@ -239,36 +331,31 @@ canvas {
     border-radius: 14px;
 
     box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+/* 
+    left: 50%;
+    transform: translateX(-50%); */
 
     display: none;
-
     overflow: hidden;
+    transition: all 0.3s ease;
 }
 
-.window.active{
+.static_window.active{
     display:block;
 }
 
 .tree{
-
     font-family: monospace;
-
     font-size: 14px;
-
     line-height: 1.6;
-
     padding: 14px;
-
     white-space: pre;
-
     overflow-y: auto;
-
     max-height: 260px;
-
     opacity: 0.9;
+    user-select: none;
 }
 
-/* скролл */
 .tree::-webkit-scrollbar{
     width:6px;
 }
@@ -276,4 +363,55 @@ canvas {
 .tree::-webkit-scrollbar-thumb{
     background: rgba(255,255,255,0.15);
     border-radius:10px;
+}
+
+.item{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* COMMIT PLACEHOLDER */
+
+.center_placeholder{
+    width: 420px;
+    height: 300px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    opacity:0.6;
+}
+
+.static_window.collapsed{
+    width: 25px;
+    height: 100%;
+    /* margin-left: 60px; */
+}
+.static_window.collapsed .icon{
+    width: 15px;
+    height: 15px;
+    margin-left: -5px;
+}
+
+.static_window.collapsed .border_line{
+    opacity:0;
+}
+
+.static_window.collapsed .tree{
+    display:none;
+}
+
+.static_window.collapsed .win_button{
+    font-size: 0;
+}
+
+.centered_image {
+    position:relative;
+    left: 10%;
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    background: none;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
 }

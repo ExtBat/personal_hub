@@ -1,53 +1,58 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Mas wae emiso!</title>
+    <title>Mas wae emiso!</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Jura:wght@300;400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-
+    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
+    <body>
+        <canvas id="bg"></canvas>
 
-<canvas id="bg"></canvas>
+        <div class="container">
 
-<div class="container">
+            <!-- TITLE PANEL -->
+            <img src="assets/images/logo.jpg" alt="Logo image" class="logo fade-in">
 
-<!-- TITLE PANEL -->
-<img src="assets/images/logo.jpg" alt="Logo image" class="logo">
+            <div class="title_panel title fade-in">
+                <span class="symbol" id="symL"></span>
+                EX:BAT
+                <span class="symbol" id="symR"></span>
+                <div class="tiny_panel subtitle">
+                    Game developer • Programmer • 3D • Digital art
+                </div>
+            </div>
 
-<div class="title_panel title">
-<span class="symbol" id="symL"></span>
-EX:BAT
-<span class="symbol" id="symR"></span>
-<div class="tiny_panel subtitle">
-Game developer • Programmer • 3D • Digital art
-</div>
-</div>
+            <!-- BUTTONS PANEL -->
+            <div class="buttons_panel buttons fade-in">
+                <button class="button" id="about"> <img src="assets/images/icons/about.png" alt="About icon" class="icon">About</button>
+                <button class="button" id="projects"> <img src="assets/images/icons/projects.png" alt="Project icon" class="icon">Projects</button>
+                <button class="button" id="arts"> <img src="assets/images/icons/arts.png" alt="Art icon" class="icon">Arts</button>
+                <button class="button" id="models"> <img src="assets/images/icons/models.png" alt="Models icon" class="icon">Models</button>
+                <button class="button" id="links"> <img src="assets/images/icons/links.png" alt="Links icon" class="icon">Links</button>
+                <div class="side-symbol left-symbol">></div>
+                <div class="side-symbol right-symbol"><</div>
+            </div>
 
-<!-- BUTTONS PANEL -->
-<div class="buttons_panel buttons">
+        </div>
 
-<button class="button" id="about"> <img src="assets/images/icons/about.png" alt="About icon" class="icon"> About</button>
-<button class="button" id="projects"> <img src="assets/images/icons/projects.png" alt="Project icon" class="icon"> Projects</button>
-<button class="button" id="arts"> <img src="assets/images/icons/arts.png" alt="Art icon" class="icon"> Arts</button>
-<button class="button" id="models"> <img src="assets/images/icons/models.png" alt="Models icon" class="icon"> Models</button>
-<button class="button" id="links"> <img src="assets/images/icons/links.png" alt="Links icon" class="icon"> Links</button>
 
-<div class="side-symbol left-symbol">></div>
-<div class="side-symbol right-symbol"><</div>
-</div>
+        <div class="win_container">
 
-<!-- WINDOWS -->
-<div class="window active">
-<p>    </p><img src="assets/images/icons/folder.png" alt="Folder icon" class="icon">
-<pre class="tree" id="tree"></pre>
-</div>
-
-</div>
-<script src="script.js"></script>
-</body>
+            <!-- WINDOWS -->
+            <div class="static_window active fade-in">
+                <button class="win_button" id="close-explorer"> 
+                    <img src="assets/images/icons/folder.png" alt="Folder icon" class="icon">explorer ×
+                    <div class="indicator" id="explorer-indicator"></div>
+                </button>
+            <div class="border_line"></div>
+                <pre class="tree" id="tree" tabindex="0"></pre>
+            </div>
+            <!-- <img src="assets/images/star.png" alt="Star icon" class="centered_image"> -->
+        </div>
+        <script src="script.js"></script>
+    </body>
 </html>
